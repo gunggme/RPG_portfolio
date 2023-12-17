@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("IsRun?")]
     [SerializeField] private bool isRun;
 
+    [Header("Check Equip")] public bool isEquipSword;
+
     [SerializeField]
     private float rotationSpeed;
 
@@ -32,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && isEquipSword)
         {
             animator.SetTrigger("Attack");
         }
