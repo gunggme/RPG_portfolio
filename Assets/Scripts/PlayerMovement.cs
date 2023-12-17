@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private float maximumSpeed;
+    [SerializeField] private float speed;
+    [SerializeField] private float _runSpeed;
+    [SerializeField] private float _walkSpeed;
+
+    [Header("IsRun?")]
+    [SerializeField] private bool isRun;
 
     [SerializeField]
     private float rotationSpeed;
-
-    [SerializeField]
-    private float jumpSpeed;
-
-    [SerializeField]
-    private float jumpButtonGracePeriod;
 
     [SerializeField]
     private Transform cameraTransform;
@@ -22,44 +20,32 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private CharacterController characterController;
     private float ySpeed;
-    private float originalStepOffset;
-    private float? lastGroundedTime;
-    private float? jumpButtonPressedTime;
+
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
         characterController = GetComponent<CharacterController>();
-        originalStepOffset = characterController.stepOffset;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-
-        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
-        float inputMagnitude = Mathf.Clamp01(movementDirection.magnitude);
-        
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        if (Input.GetMouseButtonDown(0))
         {
-            inputMagnitude /= 2;
+            animator.SetTrigger("Attack");
         }
 
-        float speed = inputMagnitude * maximumSpeed;
-        movementDirection = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movementDirection;
-        movementDirection.Normalize();
-
-        ySpeed += Physics.gravity.y * Time.deltaTime;
-        
-        animator.SetBool("Move", movementDirection != Vector3.zero);
-
-        if (characterController.isGrounded)
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2"))
         {
-            lastGroundedTime = Time.time;
+            Move();
         }
+
+        // if (characterController.isGrounded)
+        // {
+        //     lastGroundedTime = Time.time;
+        // }
 
         // if (Input.GetButtonDown("Jump"))
         // {
@@ -83,6 +69,32 @@ public class PlayerMovement : MonoBehaviour
         //     characterController.stepOffset = 0;
         // }
 
+             
+    }
+
+    void Move()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
+        float inputMagnitude = Mathf.Clamp01(movementDirection.magnitude);
+        
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        {
+            inputMagnitude /= 2;
+        }
+        
+        movementDirection = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movementDirection;
+        movementDirection.Normalize();
+
+        ySpeed += Physics.gravity.y * Time.deltaTime;
+
+        isRun = Input.GetKey(KeyCode.LeftShift);
+        animator.SetBool("Move", movementDirection != Vector3.zero);
+        animator.SetBool("Run", isRun);
+        RunCheck(isRun);
+        
         Vector3 velocity = movementDirection * speed;
         velocity.y = ySpeed;
 
@@ -93,7 +105,12 @@ public class PlayerMovement : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-        }        
+        }   
+    }
+
+    void RunCheck(bool running)
+    {
+        speed = running ? _runSpeed : _walkSpeed;
     }
 
     private void OnApplicationFocus(bool focus)

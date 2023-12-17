@@ -3525,10 +3525,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b653a8dabde2b7f47a284e4acc091ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumSpeed: 50
+  speed: 100
+  _runSpeed: 150
+  _walkSpeed: 100
+  isRun: 0
   rotationSpeed: 720
-  jumpSpeed: 0
-  jumpButtonGracePeriod: 0
   cameraTransform: {fileID: 963194228}
 --- !u!1 &1253888847
 GameObject:
@@ -6094,7 +6095,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854550471}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.10848008, y: 0.8907129, z: -0.33157656, w: 0.2914096}
+  m_LocalRotation: {x: 0.10848008, y: 0.8907129, z: -0.3315766, w: 0.29140958}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
