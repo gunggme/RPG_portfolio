@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 6f2f8b2a1aae9d948ae066be53adde2c, type: 2}
 --- !u!1 &19373277
 GameObject:
   m_ObjectHideFlags: 3
@@ -909,7 +909,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!154 &1371091576
 TerrainCollider:
@@ -1056,7 +1056,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428878950}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31397623, y: 0.11300997, z: -0.037670005, w: 0.9419282}
+  m_LocalRotation: {x: 0.3139763, y: 0.11300998, z: -0.037670027, w: 0.94192815}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1341,7 +1341,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854550471}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27955353, y: 0.11430379, z: -0.033540085, w: 0.9527117}
+  m_LocalRotation: {x: 0.27955353, y: 0.11430375, z: -0.033540066, w: 0.9527117}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3811,6 +3811,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450653040688745}
   - component: {fileID: 5866666021209531411}
+  - component: {fileID: 5866666021209531414}
   - component: {fileID: 5866666021209531413}
   - component: {fileID: 5866666021209531412}
   m_Layer: 0
@@ -5154,7 +5155,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2cf61d55475da4c8083335b1c251d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _target: {fileID: 0}
   curState: 0
+  _detectedDir: 5
+  _moveSpeed: 0
+  _attackDmg: 0
+  _attackRange: 2.2
+  _attackTimer: 0
+  curDirection: 0
+--- !u!195 &5866666021209531414
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148781409491}
+  m_Enabled: 0
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!4 &5901452234569592042
 Transform:
   m_ObjectHideFlags: 0
