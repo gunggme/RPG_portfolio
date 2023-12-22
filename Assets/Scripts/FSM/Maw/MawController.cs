@@ -19,6 +19,7 @@ public class MawController : MonoBehaviour
     [Header("AttackState")] 
     public float _attackDmg;
     public float _attackRange;
+    public float _attackRange2;
     public float _attackTimer = 0;
 
     public float curDirection;
@@ -40,10 +41,12 @@ public class MawController : MonoBehaviour
             return _animator;
         }
     }
+    private Damageable damageable;
 
     private void Awake()
     {
-        _animator = GetComponentInChildren<Animator>();
+        damageable = GetComponent<Damageable>();
+        _animator = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
         _target = FindObjectOfType<PlayerMovement>().transform;
         
@@ -51,6 +54,8 @@ public class MawController : MonoBehaviour
         stateScripts.Add(MawStates.Idle, new MawIdleState());
         stateScripts.Add(MawStates.Move, new MawMoveState());
         stateScripts.Add(MawStates.Attack, new MawAttackState());
+        stateScripts.Add(MawStates.Hit, new MawHitState());
+        stateScripts.Add(MawStates.Die, new MawDieState());
     }
 
     private void OnEnable()
@@ -64,7 +69,7 @@ public class MawController : MonoBehaviour
         if (curState != MawStates.Die)
         {
             curDirection = Vector3.Distance(transform.position, _target.position);
-            Debug.Log(curDirection);
+            //Debug.Log(curDirection);
         }
     }
 
@@ -73,5 +78,27 @@ public class MawController : MonoBehaviour
         stateScripts[curState].Exit(this);
         curState = state;
         stateScripts[curState].Enter(this);
+    }
+
+    public void Damaged(float dmg)
+    {
+        if (curState == MawStates.Hit)
+        {
+            return;
+        }
+        
+        if (!damageable.Damaged(dmg))
+        {
+            ChangeState(MawStates.Die);
+        }
+        else
+        {
+            ChangeState(MawStates.Hit);
+        }
+    }
+
+    public void ChangeMove()
+    {
+        ChangeState(MawStates.Move);
     }
 }

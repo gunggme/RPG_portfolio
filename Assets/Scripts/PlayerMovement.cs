@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool isRun;
 
     [Header("Check Equip")] public bool isEquipSword;
+    
 
     [SerializeField]
     private float rotationSpeed;
@@ -126,4 +127,6 @@ public class PlayerMovement : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
     }
+
+  
 }

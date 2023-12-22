@@ -15,7 +15,7 @@ public class MawAttackState : BaseMawState
     {
         target._attackTimer += Time.deltaTime;
         
-        if (target.curDirection > target._attackRange)
+        if (target.curDirection > target._attackRange2)
         {
             target.ChangeState(MawStates.Move);
             return;

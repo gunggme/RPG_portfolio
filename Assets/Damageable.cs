@@ -14,9 +14,10 @@ public class Damageable : MonoBehaviour
 
     public bool Damaged(float dmg)
     {
+        Debug.Log($"{gameObject.name}, cur Hp = {_hp}");
         _hp -= dmg;
 
-        if (_hp < 0)
+        if (_hp <= 0)
         {
             return false;
         }
