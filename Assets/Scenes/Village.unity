@@ -589,7 +589,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21050255, y: 0.11641501, z: -0.025255533, w: 0.9703084}
+  m_LocalRotation: {x: 0.21050255, y: 0.116414934, z: -0.025255516, w: 0.9703084}
   m_LocalPosition: {x: 474.7538, y: 4.65, z: 672.7135}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1056,7 +1056,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428878950}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3139763, y: 0.11300998, z: -0.037670027, w: 0.94192815}
+  m_LocalRotation: {x: 0.31397623, y: 0.11300999, z: -0.037670013, w: 0.9419282}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1135,7 +1135,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475168702}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21050254, y: 0.116414994, z: -0.02525553, w: 0.9703084}
+  m_LocalRotation: {x: 0.21050254, y: 0.11641496, z: -0.02525552, w: 0.9703084}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1341,7 +1341,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854550471}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27955353, y: 0.11430375, z: -0.033540066, w: 0.9527117}
+  m_LocalRotation: {x: 0.27955353, y: 0.11430379, z: -0.033540085, w: 0.9527117}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4910,8 +4910,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 5465940247181254397}
   m_AABB:
-    m_Center: {x: 0.00001859665, y: 0.12428409, z: -0.049556345}
-    m_Extent: {x: 1.5178039, y: 1.2624478, z: 0.5047734}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.79683423, y: 1.2139299, z: 0.5047734}
   m_DirtyAABB: 0
 --- !u!1 &4890665111812617418
 GameObject:
@@ -5160,7 +5160,7 @@ MonoBehaviour:
   _detectedDir: 5
   _moveSpeed: 0
   _attackDmg: 0
-  _attackRange: 2.2
+  _attackRange: 2
   _attackTimer: 0
   curDirection: 0
 --- !u!195 &5866666021209531414
@@ -5170,10 +5170,10 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148781409491}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
+  m_Radius: 0.32
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

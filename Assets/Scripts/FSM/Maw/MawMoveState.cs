@@ -13,13 +13,15 @@ public class MawMoveState : BaseMawState
 
     public override void Execute(MawController target)
     {
-        target.Agent.destination = target._target.position;
-
         if (target.curDirection < target._attackRange)
         {
             target.ChangeState(MawStates.Attack);
             return;
         }
+        
+        target.Agent.SetDestination(target._target.position);
+
+        
     }
 
     public override void Exit(MawController target)

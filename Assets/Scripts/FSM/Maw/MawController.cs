@@ -43,7 +43,7 @@ public class MawController : MonoBehaviour
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
+        _animator = GetComponentInChildren<Animator>();
         _agent = GetComponent<NavMeshAgent>();
         _target = FindObjectOfType<PlayerMovement>().transform;
         
