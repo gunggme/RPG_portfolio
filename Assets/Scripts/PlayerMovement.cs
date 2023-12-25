@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,8 +13,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool isRun;
 
     [Header("Check Equip")] public bool isEquipSword;
-    
 
+    public bool isDie;    
+    
     [SerializeField]
     private float rotationSpeed;
 
@@ -23,56 +25,35 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private CharacterController characterController;
     private float ySpeed;
+    private Damageable damageable;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        damageable = GetComponent<Damageable>();
         animator = GetComponentInChildren<Animator>();
         characterController = GetComponent<CharacterController>();
+    }
+
+    private void OnEnable()
+    {
+        isDie = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && isEquipSword)
+        if (Input.GetMouseButtonDown(0) && isEquipSword && !isDie)
         {
             animator.SetTrigger("Attack");
         }
 
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2"))
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") && !isDie)
         {
             Move();
         }
 
-        // if (characterController.isGrounded)
-        // {
-        //     lastGroundedTime = Time.time;
-        // }
-
-        // if (Input.GetButtonDown("Jump"))
-        // {
-        //     jumpButtonPressedTime = Time.time;
-        // }
-        //
-        // if (Time.time - lastGroundedTime <= jumpButtonGracePeriod)
-        // {
-        //     characterController.stepOffset = originalStepOffset;
-        //     ySpeed = -0.5f;
-        //
-        //     if (Time.time - jumpButtonPressedTime <= jumpButtonGracePeriod)
-        //     {
-        //         ySpeed = jumpSpeed;
-        //         jumpButtonPressedTime = null;
-        //         lastGroundedTime = null;
-        //     }
-        // }
-        // else
-        // {
-        //     characterController.stepOffset = 0;
-        // }
-
-             
     }
 
     void Move()
@@ -81,13 +62,7 @@ public class PlayerMovement : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
-        float inputMagnitude = Mathf.Clamp01(movementDirection.magnitude);
-        
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-        {
-            inputMagnitude /= 2;
-        }
-        
+
         movementDirection = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movementDirection;
         movementDirection.Normalize();
 
@@ -109,6 +84,19 @@ public class PlayerMovement : MonoBehaviour
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }   
+    }
+
+    public void Damaged(float dmg)
+    {
+        if (!damageable.Damaged(dmg))
+        {
+            animator.SetTrigger("Die");
+            isDie = true;
+        }
+        else
+        {
+            animator.SetTrigger("Hit");
+        }
     }
 
     void RunCheck(bool running)

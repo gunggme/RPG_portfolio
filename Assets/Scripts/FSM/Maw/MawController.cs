@@ -11,6 +11,8 @@ public class MawController : MonoBehaviour
     public MawStates curState;
 
     private Dictionary<MawStates, BaseMawState> stateScripts;
+
+    public MonsterDeal monsterDeal;
     
     [Header("IdleState")]
     public float _detectedDir;
@@ -95,6 +97,16 @@ public class MawController : MonoBehaviour
         {
             ChangeState(MawStates.Hit);
         }
+    }
+    
+    public void StartDealDamage()
+    {
+        monsterDeal.StartDealDamage();
+    }
+
+    public void EndDealDamage()
+    {
+        monsterDeal.EndDealDamage();
     }
 
     public void ChangeMove()
