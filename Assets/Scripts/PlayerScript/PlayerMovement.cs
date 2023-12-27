@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("IsRun?")]
     [SerializeField] private bool isRun;
 
+    public bool isMove = true;
+
     [Header("Check Equip")] public bool isEquipSword;
 
     public bool isDie;    
@@ -58,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger("Attack");
         }
 
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") && !isDie)
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") && !isDie && isMove)
         {
             Move();
         }

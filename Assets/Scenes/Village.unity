@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4801,6 +4801,7 @@ MonoBehaviour:
   _runSpeed: 10
   _walkSpeed: 5
   isRun: 0
+  isMove: 1
   isEquipSword: 1
   isDie: 0
   rotationSpeed: 683.2
@@ -6431,7 +6432,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428878950}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3139763, y: 0.11300998, z: -0.037670027, w: 0.94192815}
+  m_LocalRotation: {x: 0.31397623, y: 0.11300997, z: -0.037670005, w: 0.9419282}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7912,7 +7913,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854550471}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27955353, y: 0.11430375, z: -0.033540066, w: 0.9527117}
+  m_LocalRotation: {x: 0.27955353, y: 0.11430379, z: -0.033540085, w: 0.9527117}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
