@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4241,7 +4241,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21050255, y: 0.11641501, z: -0.025255533, w: 0.9703084}
+  m_LocalRotation: {x: 0.21050255, y: 0.116414934, z: -0.025255516, w: 0.9703084}
   m_LocalPosition: {x: 474.7538, y: 4.65, z: 672.7135}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6432,7 +6432,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428878950}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31397623, y: 0.11300997, z: -0.037670005, w: 0.9419282}
+  m_LocalRotation: {x: 0.31397623, y: 0.11300999, z: -0.037670013, w: 0.9419282}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6811,7 +6811,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475168702}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21050254, y: 0.116414994, z: -0.02525553, w: 0.9703084}
+  m_LocalRotation: {x: 0.21050254, y: 0.11641496, z: -0.02525552, w: 0.9703084}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7913,7 +7913,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854550471}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27955353, y: 0.11430379, z: -0.033540085, w: 0.9527117}
+  m_LocalRotation: {x: 0.27955353, y: 0.11430375, z: -0.033540066, w: 0.9527117}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7940,7 +7940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1857638487
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8712,7 +8712,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1106921872811968
 GameObject:
   m_ObjectHideFlags: 0

@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && isEquipSword && !isDie)
+        if (Input.GetMouseButtonDown(0) && isEquipSword && !isDie && isMove)
         {
             animator.SetTrigger("Attack");
         }
