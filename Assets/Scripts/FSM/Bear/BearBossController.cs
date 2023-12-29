@@ -2,17 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BearBossController : BossBaseScript
 { 
     BearState _curState;
     private Dictionary<BearState, BearStateBase> _bearScript;
 
-    private Transform _target;
+    public Transform _target;
 
     [Header("Player Distance")] public float distance;
 
+    [Header("Idle State")] public float attackDistance;
+
     // Components
+    private NavMeshAgent _agent;
+    public NavMeshAgent Agent;
     private Animator _animator;
     public Animator Animators
     {
@@ -26,6 +31,7 @@ public class BearBossController : BossBaseScript
     {
         base.Awake();
         _target = FindObjectOfType<PlayerMovement>().transform;
+        _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
     }
 

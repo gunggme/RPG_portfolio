@@ -8,6 +8,7 @@ public enum BearState
 {
     Sleep,
     Idle,
+    Move,
     Attack,
     Stun,
     Hit,
