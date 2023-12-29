@@ -47,9 +47,11 @@ public class MawController : MonoBehaviour
         }
     }
     private Damageable damageable;
+    private HPbar hpBar;
 
     private void Awake()
     {
+        hpBar = GetComponentInChildren<HPbar>();
         damageable = GetComponent<Damageable>();
         _animator = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
@@ -66,6 +68,7 @@ public class MawController : MonoBehaviour
     private void OnEnable()
     {
         ChangeState(MawStates.Idle);
+        hpBar.SetHPBar(damageable._hp, damageable._maxHp);
     }
 
     private void Update()
@@ -91,6 +94,8 @@ public class MawController : MonoBehaviour
         {
             return;
         }
+        
+        hpBar.SetHPBar(damageable._hp, damageable._maxHp);
         
         if (!damageable.Damaged(dmg))
         {
