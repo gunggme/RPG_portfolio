@@ -7,11 +7,12 @@ public class UIManager : MonoBehaviour
 {
     public GameObject _statUI;
     public GameObject _inventory;
+    public GameObject _shopUI;
 
     private void Update()
     {
-        Cursor.lockState = (_statUI.activeSelf || _inventory.activeSelf)  ? CursorLockMode.None : CursorLockMode.Locked;
-        Cursor.visible = (_statUI.activeSelf || _inventory.activeSelf);
+        Cursor.lockState = (_shopUI.activeSelf || _statUI.activeSelf || _inventory.activeSelf)  ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = (_shopUI.activeSelf || _statUI.activeSelf || _inventory.activeSelf);
         
         if (Input.GetKeyDown(KeyCode.I))
         {

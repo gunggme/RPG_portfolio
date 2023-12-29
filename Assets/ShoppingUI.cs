@@ -38,4 +38,25 @@ public class ShoppingUI : MonoBehaviour
 
         leftText.text = $"left : {leftItem}\nprice : {price}";
     }
+
+    void SetUI()
+    {
+        leftItem = 0;
+        foreach (ItemBaseScript a in playerMovement.Inventory.items)
+        {
+            if (a.name == _item.name)
+            {
+                leftItem++;
+            }
+        }
+
+        leftText.text = $"left : {leftItem}\nprice : {price}";
+    }
+
+    public void Selling_Item()
+    {
+        playerMovement.Inventory.items.Remove(_item);
+        playerMovement.money += price;
+        SetUI();
+    }
 }

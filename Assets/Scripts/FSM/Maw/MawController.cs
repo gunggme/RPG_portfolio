@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class MawController : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class MawController : MonoBehaviour
     public float _attackTimer = 0;
 
     public float curDirection;
+
+    public GameObject applePrefab;
     
     // Componenets
     private NavMeshAgent _agent;
@@ -112,5 +115,10 @@ public class MawController : MonoBehaviour
     public void ChangeMove()
     {
         ChangeState(MawStates.Move);
+    }
+
+    public void SpawnItem()
+    {
+        Instantiate(applePrefab, new Vector3(transform.position.x, 1, transform.position.z), Quaternion.identity);
     }
 }

@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isMove = true;
 
     [Header("Check Equip")] public bool isEquipSword;
+    public int money = 0;
 
     public bool isDie;    
     

@@ -15,6 +15,12 @@ public class MawDieState : BaseMawState
     {
         target.Anim.SetTrigger("Die");
         yield return new WaitForSeconds(5f);
+        float randomInt = Random.Range(0f, 100f);
+        if (randomInt < 30f)
+        {
+            // 아이템 소환
+            target.SpawnItem();
+        }
         target.gameObject.SetActive(false);
     }
 }
