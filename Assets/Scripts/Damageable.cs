@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Damageable : MonoBehaviour
 {
+
     public float _hp;
     public float _maxHp;
 

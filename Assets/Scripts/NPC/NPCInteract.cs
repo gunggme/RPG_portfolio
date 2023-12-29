@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class NPCInteract : InteractionBase
 {
-    public string[] _chat;
+    public string[] _chatNormal;
     public bool isShop;
-
     public GameObject _chatWindow;
     public TMP_Text _text;
 
@@ -18,8 +16,12 @@ public class NPCInteract : InteractionBase
         if (!_chatWindow.activeSelf)
         {
             _chatWindow.SetActive(true);
-            _chatWindow.GetComponent<ChatWindow>().chatString = _chat;
-            _chatWindow.GetComponent<ChatWindow>().isShop = isShop;
+            _chatWindow.GetComponent<ChatWindow>().chatString = _chatNormal;
+            if (isShop)
+            {
+                // 상점 창 열기
+                _chatWindow.GetComponent<ChatWindow>().isShop = isShop;
+            }
             base.Interaction_Check();
         }
     }

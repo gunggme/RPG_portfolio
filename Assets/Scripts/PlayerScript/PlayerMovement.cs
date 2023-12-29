@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private float ySpeed;
     private Damageable damageable;
     private Inventory inventory;
+    private PlayerHPBar playerHpBar;
 
     public Inventory Inventory
     {
@@ -42,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerHpBar = FindObjectOfType<PlayerHPBar>();
         inventory = FindObjectOfType<Inventory>();
         damageable = GetComponent<Damageable>();
         animator = GetComponentInChildren<Animator>();
@@ -100,6 +102,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Damaged(float dmg)
     {
+        playerHpBar.HpBarSet(damageable._hp, damageable._maxHp);
+        
         if (!damageable.Damaged(dmg))
         {
             animator.SetTrigger("Die");

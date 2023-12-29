@@ -10,11 +10,11 @@ public class ChatWindow : MonoBehaviour
     private PlayerMovement playerMovement;
     private TMP_Text _text;
     public int _chatIndex;
-    public bool isShop;
     private bool isFirst;
     public string[] chatString;
     public GameObject shopUI;
 
+    public bool isShop;
     private void Awake()
     {
         _text = GetComponentInChildren<TMP_Text>();
