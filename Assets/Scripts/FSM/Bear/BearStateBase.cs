@@ -6,6 +6,7 @@ using UnityEngine;
 [Serializable]
 public enum BearState
 {
+    none,
     Sleep,
     Idle,
     Move,

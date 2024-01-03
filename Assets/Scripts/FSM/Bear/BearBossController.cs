@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class BearBossController : BossBaseScript
 { 
+    [SerializeField]
     BearState _curState;
     private Dictionary<BearState, BearStateBase> _bearScript;
 
@@ -51,12 +52,22 @@ public class BearBossController : BossBaseScript
         _bearScript.Add(BearState.Idle, new BearIdleState());
         _bearScript.Add(BearState.Move, new BearMoveState());
         _bearScript.Add(BearState.Attack, new BearAttackState());
+        _curState = BearState.none;
         //_bearScript.Add(BearState.Death, new ());
+    }
+
+    private void Start()
+    {
+        distance = Vector3.Distance(transform.position, target.transform.position);
+        ChangeState(BearState.Sleep);
     }
 
     private void Update()
     {
-        _bearScript[_curState].Execute(this);
+        if (_curState != BearState.none)
+        {
+            _bearScript[_curState].Execute(this);
+        }
         if (_curState != BearState.Death)
         {
             distance = Vector3.Distance(transform.position, target.transform.position);
@@ -65,7 +76,11 @@ public class BearBossController : BossBaseScript
 
     public void ChangeState(BearState _newState)
     {
-        _bearScript[_curState].Exit(this);
+        if (_curState != BearState.none)
+        {
+            _bearScript[_curState].Exit(this);
+        }
+        
         _curState = _newState;
         _bearScript[_curState].Enter(this);
     }
