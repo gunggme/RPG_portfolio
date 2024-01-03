@@ -13,13 +13,13 @@ public class BearMoveState : BearStateBase
 
     public override void Execute(BearBossController target)
     {
-        if (target.distance < 2)
+        if (target.distance < target.attackDistance)
         {
             target.ChangeState(BearState.Attack);
         }
         else
         {
-            target.Agent.destination = target._target.position;
+            target.Agent.destination = target.target.position;
         }
         base.Execute(target);
     }

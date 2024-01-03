@@ -9,15 +9,26 @@ public class BearBossController : BossBaseScript
     BearState _curState;
     private Dictionary<BearState, BearStateBase> _bearScript;
 
-    public Transform _target;
+    public Transform target;
 
     [Header("Player Distance")] public float distance;
 
     [Header("Idle State")] public float attackDistance;
 
+    [Header("Sleep State")] public float AwakeDistance;
+
+    [Header("Attack State")] public float tempAttackTimer;
+    public float attackTimer;
+
     // Components
     private NavMeshAgent _agent;
-    public NavMeshAgent Agent;
+    public NavMeshAgent Agent
+    {
+        get
+        {
+            return _agent;
+        }
+    }
     private Animator _animator;
     public Animator Animators
     {
@@ -30,9 +41,17 @@ public class BearBossController : BossBaseScript
     protected override void Awake()
     {
         base.Awake();
-        _target = FindObjectOfType<PlayerMovement>().transform;
+        target = FindObjectOfType<PlayerMovement>().transform;
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
+
+        _bearScript = new Dictionary<BearState, BearStateBase>();
+        
+        _bearScript.Add(BearState.Sleep, new BearSleepState());
+        _bearScript.Add(BearState.Idle, new BearIdleState());
+        _bearScript.Add(BearState.Move, new BearMoveState());
+        _bearScript.Add(BearState.Attack, new BearAttackState());
+        //_bearScript.Add(BearState.Death, new ());
     }
 
     private void Update()
@@ -40,7 +59,7 @@ public class BearBossController : BossBaseScript
         _bearScript[_curState].Execute(this);
         if (_curState != BearState.Death)
         {
-            distance = Vector3.Distance(transform.position, _target.transform.position);
+            distance = Vector3.Distance(transform.position, target.transform.position);
         }
     }
 

@@ -11,7 +11,7 @@ public class BearSleepState : BearStateBase
 
     public override void Execute(BearBossController target)
     {
-        if (target.distance < 2)
+        if (target.distance < target.AwakeDistance)
         {
             target.ChangeState(BearState.Idle);
         }
