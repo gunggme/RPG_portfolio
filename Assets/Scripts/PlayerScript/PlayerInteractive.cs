@@ -9,14 +9,29 @@ public class PlayerInteractive : MonoBehaviour
     public GameObject checkObj;
     public LayerMask layer;
     public float length;
-    
+
+    private PlayerMovement playerMovement;
+
+    private void Awake()
+    {
+        playerMovement = GetComponentInParent<PlayerMovement>();
+    }
+
     private void Update()
     {
         if (Physics.Raycast(transform.position, transform.forward, out hit, length, layer))
         {
-            if (Input.GetKeyDown(KeyCode.E) && hit.transform.TryGetComponent(out InteractionBase IB))
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                IB.Interaction();
+                if (hit.transform.TryGetComponent(out InteractionBase IB))
+                {
+                    IB.Interaction();
+                }
+
+                if (hit.transform.TryGetComponent(out PortalObj portal))
+                {
+                    portal.CheckMoney(playerMovement.money);
+                }
             }
         }
     }
