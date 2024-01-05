@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class BearBossController : BossBaseScript
-{ 
+{
+
     [SerializeField]
     BearState _curState;
     private Dictionary<BearState, BearStateBase> _bearScript;
@@ -46,12 +48,14 @@ public class BearBossController : BossBaseScript
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
 
-        _bearScript = new Dictionary<BearState, BearStateBase>();
-        
-        _bearScript.Add(BearState.Sleep, new BearSleepState());
-        _bearScript.Add(BearState.Idle, new BearIdleState());
-        _bearScript.Add(BearState.Move, new BearMoveState());
-        _bearScript.Add(BearState.Attack, new BearAttackState());
+        _bearScript = new Dictionary<BearState, BearStateBase>
+        {
+            { BearState.Sleep, new BearSleepState() },
+            { BearState.Idle, new BearIdleState() },
+            { BearState.Move, new BearMoveState() },
+            { BearState.Attack, new BearAttackState() }
+        };
+
         _curState = BearState.none;
         //_bearScript.Add(BearState.Death, new ());
     }
@@ -84,5 +88,13 @@ public class BearBossController : BossBaseScript
         _curState = _newState;
         _bearScript[_curState].Enter(this);
     }
-    
+
+    public override void Damaged(float dmg)
+    {
+        if (damageable.IsDamage(dmg))
+        {
+            ChangeState(BearState.Death);
+        }
+        base.Damaged(dmg);
+    }
 }

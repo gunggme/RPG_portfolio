@@ -4,11 +4,13 @@ using UnityEngine;
 
 public abstract class BossBaseScript : MonoBehaviour
 {
-    protected Damageable damageable;
+    [SerializeField] protected Sprite IconImage;
+    
+    protected BossDamageable damageable;
 
     protected virtual void Awake()
     {
-        damageable = GetComponent<Damageable>();
+        damageable = GetComponent<BossDamageable>();
     }
     
     public virtual void Damaged(float dmg)
