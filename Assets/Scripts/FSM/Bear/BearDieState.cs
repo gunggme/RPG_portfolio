@@ -8,6 +8,7 @@ public class BearDieState : BearStateBase
     {
         target.enabled = false;
         target.Animators.SetTrigger("Die");
+        target.damageable.OffHPBar();
     }
 
     public override void Execute(BearBossController target)

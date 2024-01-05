@@ -6,7 +6,6 @@ public class MawMoveState : BaseMawState
 {
     public override void Enter(MawController target)
     {
-        Debug.Log($"Cur State : {MawStates.Move}");
         target.Anim.SetBool("Move", true);
         target.Agent.enabled = true;
     }

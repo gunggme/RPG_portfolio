@@ -4,9 +4,9 @@ using UnityEngine;
 
 public abstract class BossBaseScript : MonoBehaviour
 {
-    [SerializeField] protected Sprite IconImage;
+    [SerializeField] public Sprite IconImage;
     
-    protected BossDamageable damageable;
+    public BossDamageable damageable;
 
     protected virtual void Awake()
     {

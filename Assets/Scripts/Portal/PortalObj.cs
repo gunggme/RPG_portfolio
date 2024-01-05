@@ -29,12 +29,19 @@ public class PortalObj : InteractionBase
         }
     }
 
+    private void Update()
+    {
+        if (isOpen && priceText.gameObject.activeSelf)
+        {
+            priceText.gameObject.SetActive(false);
+        }
+    }
+
     public void CheckMoney(int money)
     {
         if (price <= money)
         {
             isOpen = true;
-            priceText.gameObject.SetActive(false);
         }
         else
         {

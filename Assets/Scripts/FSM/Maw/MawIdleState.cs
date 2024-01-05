@@ -6,7 +6,6 @@ public class MawIdleState : BaseMawState
 {
     public override void Enter(MawController target)
     {
-        Debug.Log($"Cur State : {MawStates.Idle}");
         target.Agent.enabled = false;
     }
 

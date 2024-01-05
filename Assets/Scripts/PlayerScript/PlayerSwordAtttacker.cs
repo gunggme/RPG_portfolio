@@ -25,6 +25,12 @@ public class PlayerSwordAtttacker : MonoBehaviour
                     mawController.Damaged(weaponDamage);
                     enemys.Add(mawController.gameObject);
                 }
+
+                if (hit.transform.TryGetComponent(out BossBaseScript bossBaseScript))
+                {
+                    bossBaseScript.Damaged(weaponDamage);
+                    enemys.Add(bossBaseScript.gameObject);
+                }
             }
         }
     }

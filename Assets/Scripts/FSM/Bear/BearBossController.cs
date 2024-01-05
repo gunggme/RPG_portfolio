@@ -53,7 +53,8 @@ public class BearBossController : BossBaseScript
             { BearState.Sleep, new BearSleepState() },
             { BearState.Idle, new BearIdleState() },
             { BearState.Move, new BearMoveState() },
-            { BearState.Attack, new BearAttackState() }
+            { BearState.Attack, new BearAttackState() },
+            { BearState.Death , new BearDieState()}
         };
 
         _curState = BearState.none;

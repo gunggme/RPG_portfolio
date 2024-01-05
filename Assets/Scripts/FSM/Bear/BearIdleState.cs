@@ -8,6 +8,7 @@ public class BearIdleState : BearStateBase
     {
         target.Agent.enabled = false;
         target.Animators.SetTrigger("Awake");
+        target.damageable.OnHPBar(target.IconImage);
         base.Enter(target);
     }
 

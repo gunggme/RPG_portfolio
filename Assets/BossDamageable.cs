@@ -15,14 +15,21 @@ public class BossDamageable : MonoBehaviour
         hp = maxHP;
     }
 
-    public void OnHPBar()
+    public void OnHPBar(Sprite sprite)
     {
         hpBar.gameObject.SetActive(true);
+        hpBar.GetComponentInChildren<Image>().sprite = sprite;
+    }
+
+    public void OffHPBar()
+    {
+        hpBar.gameObject.SetActive(false);
     }
 
     public bool IsDamage(float dmg)
     {
         hp -= dmg;
+        hpBar.value = hp / maxHP;
         
         if (hp <= 0)
         {
