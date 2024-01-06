@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -15,7 +16,8 @@ public class PlayerMovement : MonoBehaviour
     public bool isMove = true;
 
     [Header("Check Equip")] public bool isEquipSword;
-    public int money = 0;
+    [Header("Money")] public int money = 0;
+    [SerializeField] private TMP_Text moneyText;
 
     public bool isDie;    
     
@@ -102,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Damaged(float dmg)
     {
-        playerHpBar.HpBarSet(damageable._hp, damageable._maxHp);
+        Debug.Log($"{dmg} is Damage");
         
         if (!damageable.Damaged(dmg))
         {
@@ -113,6 +115,7 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetTrigger("Hit");
         }
+        playerHpBar.HpBarSet(damageable._hp, damageable._maxHp);
     }
 
     void RunCheck(bool running)
@@ -132,5 +135,15 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-  
+    public void MoneyAdd(int price)
+    {
+        moneyText.text = $"Money : {money:N0}";
+        money += price;
+    }
+
+    public void MoneyRemove(int price)
+    {
+        moneyText.text = $"Money : {money:N0}";
+        money -= price;
+    }
 }

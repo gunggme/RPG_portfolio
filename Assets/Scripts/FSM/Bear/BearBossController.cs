@@ -22,6 +22,7 @@ public class BearBossController : BossBaseScript
 
     [Header("Attack State")] public float tempAttackTimer;
     public float attackTimer;
+    public BossAttacks[] attackCols;
 
     // Components
     private NavMeshAgent _agent;
@@ -97,5 +98,14 @@ public class BearBossController : BossBaseScript
             ChangeState(BearState.Death);
         }
         base.Damaged(dmg);
+    }
+
+    public void AttackColStart(int nums)
+    {
+        attackCols[nums].AttackStart();
+    }
+    public void AttackColEnd(int nums)
+    {
+        attackCols[nums].AttackEnd();
     }
 }

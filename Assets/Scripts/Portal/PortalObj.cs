@@ -13,10 +13,13 @@ public class PortalObj : InteractionBase
 
     public GameObject notUseText;
 
+    public PlayerMovement playerMovement;
+
     private TMP_Text priceText;
 
     private void Start()
     {
+        playerMovement = FindObjectOfType<PlayerMovement>();
         priceText = GetComponentInChildren<TMP_Text>();
         priceText.text = $"price : {price:N0}";
     }
@@ -42,6 +45,7 @@ public class PortalObj : InteractionBase
         if (price <= money)
         {
             isOpen = true;
+            playerMovement.MoneyRemove(price);
         }
         else
         {
